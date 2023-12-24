@@ -1,25 +1,35 @@
 let random = Math.floor(Math.random() * 5),
   kicks = 1;
 
-handleClick = (event) => {
-  event.preventDefault();
+const screenOne = document.querySelector(".screenOne"),
+  screenTwo = document.querySelector(".screenTwo");
+
+reloadClassBtns = () => {
+  screenOne.classList.toggle("hide");
+  screenTwo.classList.toggle("hide");
+};
+
+handleTryClick = (e) => {
+  e.preventDefault();
   const inputNumber = document.querySelector("#inputNumber");
 
   if (inputNumber.value == random) {
-    document.querySelector(".screenOne").classList.add("hide");
-    document.querySelector(".screenTwo").classList.remove("hide");
+    reloadClassBtns();
 
     document.querySelector(
       ".screenTwo h2"
     ).innerText = `Acertou em ${kicks} tentativa(s)`;
-
-    random = Math.floor(Math.random() * 5);
-    kicks = 1;
   } else kicks++;
 };
 
-gameAgain = (event) => {
-  event.preventDefault();
-  document.querySelector(".screenOne").classList.remove("hide");
-  document.querySelector(".screenTwo").classList.add("hide");
+gameAgain = () => {
+  e.preventDefault();
+  kicks = 1;
+  reloadClassBtns();
 };
+
+const btnTry = document.querySelector("#btnTry"),
+  btnAgain = document.querySelector("#btnAgain");
+
+btnTry.addEventListener("click", handleTryClick);
+btnAgain.addEventListener("click", gameAgain);

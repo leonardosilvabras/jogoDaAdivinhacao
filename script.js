@@ -2,7 +2,6 @@
 const screenOne = document.querySelector(".screenOne"),
   screenTwo = document.querySelector(".screenTwo"),
   btnTry = document.querySelector("#btnTry"),
-  btnAgain = document.querySelector("#btnAgain"),
   inputNumber = document.querySelector("#inputNumber");
 
 let random = Math.floor(Math.random() * 5),
